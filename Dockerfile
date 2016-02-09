@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 MAINTAINER Dave P
 
-RUN sed -i -E 's/deb http:\/\/archive.ubuntu.com/deb http:\/\/debmirror.services.davepedu.com:8080/' /etc/apt/sources.list
+# RUN sed -i -E 's/deb http:\/\/archive.ubuntu.com/deb http:\/\/debmirror.services.davepedu.com:8080/' /etc/apt/sources.list
 
 # Create rduser (password is rduser)
 RUN locale-gen en && \
