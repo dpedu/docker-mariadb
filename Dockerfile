@@ -19,5 +19,4 @@ ADD start /start
 
 EXPOSE 3306
 
-ENTRYPOINT ["start"]
-
+# ENTRYPOINT ["/start"]
