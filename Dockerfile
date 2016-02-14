@@ -15,8 +15,9 @@ RUN locale-gen en && \
 
 COPY supervisord-mariadb.conf /etc/supervisor/conf.d/mariadb.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD start /start
 
 EXPOSE 3306
 
-ENTRYPOINT ["supervisord"]
+ENTRYPOINT ["start"]
 
