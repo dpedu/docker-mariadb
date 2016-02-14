@@ -3,6 +3,7 @@
 trap 'kill $(jobs -p)' EXIT
 
 : ${MYSQL_PORT:=3306}
+export MYSQL_PORT
 
 if [ ! -d /var/lib/mysql/mysql ] ; then
     /usr/bin/mysql_install_db
