@@ -11,7 +11,8 @@ RUN locale-gen en && \
     echo "mariadb-server-5.5 mysql-server/root_password_again password root" | debconf-set-selections && \
     echo "mariadb-server-5.5 mysql-server/root_password password root" | debconf-set-selections && \
     apt-get -y install mariadb-server-5.5 mariadb-client-5.5 && \
-    sed -i -E 's/bind-address\s+=.+$/bind-address = 0.0.0.0/' /etc/mysql/my.cnf
+    sed -i -E 's/bind-address\s+=.+$/bind-address = 0.0.0.0/' /etc/mysql/my.cnf && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY supervisord-mariadb.conf /etc/supervisor/conf.d/mariadb.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -19,4 +20,4 @@ ADD start /start
 
 EXPOSE 3306
 
-# ENTRYPOINT ["/start"]
+ENTRYPOINT ["/start"]
