@@ -2,7 +2,8 @@ FROM ubuntu:xenial
 
 # RUN sed -i -E 's/deb http:\/\/archive.ubuntu.com/deb http:\/\/debmirror.services.davepedu.com:8080/' /etc/apt/sources.list
 
-RUN apt-get update && \
+RUN set -x && \
+    apt-get update && \
     apt-get install -y software-properties-common && \
     apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8 && \
     add-apt-repository 'deb [arch=amd64] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.2/ubuntu xenial main' && \
