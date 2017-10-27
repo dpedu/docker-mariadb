@@ -6,12 +6,12 @@ export MYSQL_PORT
 chown -R mysql:mysql /var/run/mysqld /var/lib/mysql
 
 if [ ! -d /var/lib/mysql/mysql ] ; then
-    /usr/bin/mysql_install_db
+    sudo -Hu mysql /usr/bin/mysql_install_db
 fi
 
-exec /usr/sbin/mysqld \
+exec sudo -Hu mysql /usr/sbin/mysqld \
     --basedir=/usr \
-    --datadir=/var/lib/mysql
+    --datadir=/var/lib/mysql \
     --plugin-dir=/usr/lib/mysql/plugin \
     --user=mysql \
     --log-error=/var/log/mysql/error.log \
