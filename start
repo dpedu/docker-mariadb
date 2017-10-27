@@ -3,6 +3,8 @@
 : ${MYSQL_PORT:=3306}
 export MYSQL_PORT
 
+chown -R mysql:mysql /var/run/mysqld /var/lib/mysql
+
 if [ ! -d /var/lib/mysql/mysql ] ; then
     /usr/bin/mysql_install_db
 fi

@@ -9,11 +9,11 @@ RUN set -x && \
     add-apt-repository 'deb [arch=amd64] http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.2/ubuntu xenial main' && \
     apt-get update && \
     mkdir /var/run/mysqld && \
-    chown mysql:mysql /var/run/mysqld && \
     echo "mariadb-server-10.2 mysql-server/root_password_again password root" | debconf-set-selections && \
     echo "mariadb-server-10.2 mysql-server/root_password password root" | debconf-set-selections && \
     apt-get install -y mariadb-server-10.2 mariadb-client-10.2 && \
     sed -i -E 's/bind-address\s+=.+$/bind-address = 0.0.0.0/' /etc/mysql/my.cnf && \
+    chown -R mysql:mysql /var/run/mysqld && \
     rm -rf /var/lib/apt/lists/*
 
 ADD start /start
